@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能房间监测与控制平台</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white rounded d-flex">
+        <div class="container">
+            <a class="navbar-brand page-navbar-title" href="/">智能房间监测与控制平台</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item" id="index">
+                        <a class="nav-link" href="/">仪表盘</a>
+                    </li>
+                    <li class="nav-item" id="statistics">
+                        <a class="nav-link" href="/statistics">参数变化情况统计</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto" id="navbar-right">
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block container %}
+    {% endblock %}
+
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <span class="text-muted">Copyright &copy; 2020 Nitrogens.</span>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/echarts.min.js' %}"></script>
+    <script src="{% static 'js/ajax/common.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+</html>

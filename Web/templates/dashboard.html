@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+    <div class="container page-content">
+        <div class="row">
+            <div class="col-lg">
+                <div class="alert alert-primary" role="alert">
+                  <h4 class="alert-heading"><i class="fas fa-home"></i> 欢迎回家！</h4>
+                  <p class="mb-0">这是整个房间的情况，等候您去审阅！</p>
+                </div>
+            </div>
+        </div>
+        <div class="cp-dashboard-info row">
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-question-circle"></i>当前温度
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-statnumber badge badge-pill badge-info" id="temperature"></span>
+                        <span class="cp-dashboard-unit">℃</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-star"></i>当前烟雾浓度值
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-unit badge badge-pill" id="smoke"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-list-ol"></i>当前光照强度
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-statnumber badge badge-pill badge-warning" id="light"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cp-dashboard-info row">
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-question-circle"></i>灯泡 0
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-statnumber badge badge-pill" id="led-0"></span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" id="led-0-0">关</button>
+                            <button type="button" class="btn btn-warning" id="led-0-1">开</button>
+                            <button type="button" class="btn btn-primary" id="led-0-2">自动调整</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-question-circle"></i>灯泡 1
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-statnumber badge badge-pill" id="led-1"></span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" id="led-1-0">关</button>
+                            <button type="button" class="btn btn-warning" id="led-1-1">开</button>
+                            <button type="button" class="btn btn-primary" id="led-1-2">自动调整</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-question-circle"></i>灯泡 2
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-statnumber badge badge-pill" id="led-2"></span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" id="led-2-0">关</button>
+                            <button type="button" class="btn btn-warning" id="led-2-1">开</button>
+                            <button type="button" class="btn btn-primary" id="led-2-2">自动调整</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/ajax/dashboard.js' %}"></script>
+{% endblock %}

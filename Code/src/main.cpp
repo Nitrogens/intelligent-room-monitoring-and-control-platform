@@ -10,7 +10,7 @@
 #include <RtcDS1302.h>
 
 #define ADDR_SMOKE_THRESHOLD    1
-#define ADDR_LED_WORKMODE       4
+#define ADDR_LED_WORKMODE       15
 #define ADDR_RGB_VALUE          7
 
 #define PIN_LDR                 PIN_A1
@@ -121,6 +121,9 @@ void setup() {
 
     for (int k = 0; k < 3; k++) {
         status[k] = GetLEDWorkMode(k);
+        if (status[k] <= 1) {
+            digitalWrite(led[k], status[k]);
+        }
     }
 
     xTaskCreate(TaskLightIntensityData, "LightIntensityData", 72, NULL, 1, &Task_LightIntensityData);
@@ -173,7 +176,7 @@ void SetLEDWorkMode(int id, int value) {
     switch (value) {
     case 0:
     case 1:
-        EEPROM.write(ADDR_LED_WORKMODE + id, byte(0));
+        EEPROM.write(ADDR_LED_WORKMODE + id, byte(value));
         digitalWrite(led[id], value);
         break;
     case 2:

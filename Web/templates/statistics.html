@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block container %}
+    <div class="container page-content">
+        <div class="cp-dashboard-content-list row">
+            <div class="col-lg">
+                <div class="card cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-poll"></i>房间温度变化情况
+                    </div>
+                    <div class="chart" id="chart-codeforces">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cp-dashboard-content-list row">
+            <div class="col-lg">
+                <div class="card cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-poll"></i>房间烟雾浓度变化情况
+                    </div>
+                    <div class="chart" id="chart-codeforces">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cp-dashboard-content-list row">
+            <div class="col-lg">
+                <div class="card cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-poll"></i>房间光强变化情况
+                    </div>
+                    <div class="chart" id="chart-codeforces">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/ajax/user.js' %}"></script>
+{% endblock %}

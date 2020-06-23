@@ -1,0 +1,175 @@
+body {
+    font-family: Microsoft Yahei UI, "微软雅黑", Arial, Helvetica, sans-serif;
+}
+
+.page-content {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.page-sidebar .card-title, .card-text {
+    text-align: center;
+}
+
+.page-sidebar .input-group {
+    margin-top: 15px;
+}
+
+.page-sidebar .list-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.page-sidebar-list-content .fas {
+    width: 15%;
+}
+
+.page-sidebar-list-content .fab {
+    width: 15%;
+}
+
+.page-sidebar-list-content .badge {
+    float: right;
+    margin-top: 2px;
+}
+
+.cp-dashboard-card {
+    margin-top: 15px;
+}
+
+.cp-dashboard-card .card-header {
+    font-size: 20px;
+}
+
+.cp-dashboard-card .card-header .fas, .cp-dashboard-card .card-header .far {
+    width: 15px;
+    margin-right: 12px;
+}
+
+.cp-dashboard-card .card-body {
+    font-size: 24px;
+}
+
+.cp-dashboard-card .btn {
+    /*font-size: 24px;*/
+}
+
+.cp-dashboard-info .fas, .cp-dashboard-info .far {
+    width: 15px;
+    margin-right: 20px;
+}
+
+.cp-dashboard-content-list {
+    margin-top: 18px;
+}
+
+.cp-dashboard-content-list .card {
+    margin-top: 10px;
+}
+
+.problem-id {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.submission-list .badge {
+    font-size: 16px;
+}
+
+.submission-list .fas {
+    width: 10px;
+    margin-right: 10px;
+}
+
+.user-id .fas {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.user-legendary {
+    font-weight: bold;
+    color: white !important;
+    background-color: red !important;
+}
+
+.user-red {
+    font-weight: bold;
+    color: white !important;
+    background-color: red !important;
+}
+
+.user-fire {
+    font-weight: bold;
+    color: white !important;
+    background-color: red !important;
+}
+
+.user-yellow {
+    font-weight: bold;
+    color: white !important;
+    background-color: #bb0 !important;
+}
+
+.user-violet {
+    font-weight: bold;
+    color: white !important;
+    background-color: #a0a !important;
+}
+
+.user-orange {
+    font-weight: bold;
+    color: white !important;
+    background-color: #FF8C00 !important;
+}
+
+.user-blue {
+    font-weight: bold;
+    color: white !important;
+    background-color: blue !important;
+}
+
+.user-cyan {
+    font-weight: bold;
+    color: white !important;
+    background-color: #03A89E !important;
+}
+
+.user-green {
+    font-weight: bold;
+    color: white !important;
+    background-color: green !important;
+}
+
+.user-gray {
+    font-weight: bold;
+    color: white !important;
+    color: gray !important;
+}
+
+.user-admin {
+    font-weight: bold;
+    color: white !important;
+    color: black !important;
+}
+
+.chart {
+    margin-top:40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#chart-status, #chart-oj {
+    width: 500px;
+    height: 500px;
+}
+
+#chart-codeforces, #chart-monthly {
+    width: 1000px;
+    height: 400px;
+}
+
+.footer {
+    background-color: #f5f5f5;
+}

@@ -14,13 +14,13 @@ r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
 def data_process(data_str: str):
     data_list = data_str.split(" ")
     timestamp = int(time.mktime(time.strptime(data_list[-2] + " " + data_list[-1], "%Y/%m/%d %H:%M:%S")))
-    # if data_list[0] == '0':
-    #     r.rpush(KEY_LIGHT, "%s, %s" % (timestamp, int(float(data_list[1]))))
-    # elif data_list[0] == '1':
-    #     r.rpush(KEY_SMOKE, "%s, %s" % (timestamp, int(float(data_list[1]))))
-    #     r.set(KEY_SMOKE_THRESHOLD, str(int(float((data_list[2])))))
-    # elif data_list[0] == '2':
-    #     r.rpush(KEY_TEMPERATURE, "%s, %s" % (timestamp, float(data_list[1])))
+    if data_list[0] == '0':
+        r.rpush(KEY_LIGHT, "%s, %s" % (timestamp, int(float(data_list[1]))))
+    elif data_list[0] == '1':
+        r.rpush(KEY_SMOKE, "%s, %s" % (timestamp, int(float(data_list[1]))))
+        r.set(KEY_SMOKE_THRESHOLD, str(int(float((data_list[2])))))
+    elif data_list[0] == '2':
+        r.rpush(KEY_TEMPERATURE, "%s, %s" % (timestamp, float(data_list[1])))
     print("[Read]", data_list, timestamp)
 
 

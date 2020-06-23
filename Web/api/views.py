@@ -18,6 +18,56 @@ KEY_B = "key_b"
 r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
 
 
+class BasicInfoAction(View):
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        if request.method.lower() in self.http_method_names:
+            handler = getattr(self, request.method.lower(), self.http_method_not_allowed)
+        else:
+            handler = self.http_method_not_allowed
+        return handler(request, *args, **kwargs)
+
+    def get(self, request):
+        light_data = str(r.lindex(KEY_LIGHT, -1)).split(", ")[1][:-1]
+        smoke_data = str(r.lindex(KEY_SMOKE, -1)).split(", ")[1][:-1]
+        smoke_threshold_data = r.get(KEY_SMOKE_THRESHOLD)
+        temperature_data = str(r.lindex(KEY_TEMPERATURE, -1)).split(", ")[1][:-1]
+        print(light_data, smoke_data, temperature_data)
+        return JsonResponse({
+            'message': 'OK',
+            'data': {
+                'light': int(float(light_data)),
+                'smoke': int(float(smoke_data)),
+                'smoke_threshold': int(float(smoke_threshold_data)),
+                'temperature': float(temperature_data),
+            }
+        })
+
+
+class LEDStatusAction(View):
+    @csrf_exempt
+    def dispatch(self, request, *args, **kwargs):
+        if request.method.lower() in self.http_method_names:
+            handler = getattr(self, request.method.lower(), self.http_method_not_allowed)
+        else:
+            handler = self.http_method_not_allowed
+        return handler(request, *args, **kwargs)
+
+    def get(self, request):
+        led0_data = r.get(KEY_LED_WORK_MODE % "0")
+        led1_data = r.get(KEY_LED_WORK_MODE % "1")
+        led2_data = r.get(KEY_LED_WORK_MODE % "2")
+        print(led0_data, led1_data, led2_data)
+        return JsonResponse({
+            'message': 'OK',
+            'data': {
+                'led_0': int(float(led0_data)),
+                'led_1': int(float(led1_data)),
+                'led_2': int(float(led2_data)),
+            }
+        })
+
+
 class LightIntensityAction(View):
     @csrf_exempt
     def dispatch(self, request, *args, **kwargs):
