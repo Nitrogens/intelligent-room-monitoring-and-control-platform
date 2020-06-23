@@ -96,8 +96,81 @@
                 </div>
             </div>
         </div>
+        <div class="cp-dashboard-info row">
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-question-circle"></i>当前烟雾报警阈值
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-statnumber badge badge-pill badge-danger" id="smoke-threshold"></span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group mb-3">
+                            <input id="input-threshold" type="number" class="form-control" placeholder="报警阈值" aria-label="报警阈值" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-warning" type="button" id="button-threshold">修改</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg">
+                <div class="card text-center cp-dashboard-card">
+                    <div class="card-header">
+                        <i class="fas fa-star"></i>彩色灯泡颜色
+                    </div>
+                    <div class="card-body">
+                        <span class="cp-dashboard-unit badge badge-pill" id="rgb"></span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <div id="colorpicker"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 {% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/ewPlugins.min.js' %}"></script>
     <script src="{% static 'js/ajax/dashboard.js' %}"></script>
+    <script>
+    function hextoint(data) {
+        if (data.charCodeAt() >= 'A'.charCodeAt() && data.charCodeAt() <= 'F'.charCodeAt()) {
+            return data.charCodeAt() - 'A'.charCodeAt() + 10;
+        }
+        return data.charCodeAt() - '0'.charCodeAt();
+    }
+    var colorPicker = new ewPlugins('colorpicker', {
+        el: "#colorpicker",
+        alpha: false,//是否开启透明度
+        size: 'small',//颜色box类型
+        predefineColor: ['#223456', 'rgba(122,35,77,.5)','rgba(255,255,255,1)'],//预定义颜色
+        disabled: false,//是否禁止打开颜色选择器
+        openPickerAni: 'opacity',//打开颜色选择器动画
+        sure: function (color) {
+            //document.body.style.background = color;
+            var R = (hextoint(color[1]) * 16) + hextoint(color[2]);
+            var G = (hextoint(color[3]) * 16) + hextoint(color[4]);
+            var B = (hextoint(color[5]) * 16) + hextoint(color[6]);
+            $.ajax({
+                url: '/api/setting/rgb',
+                dataType: 'json',
+                async: true,
+                type: 'GET',
+                data: {
+                    r: R,
+                    g: G,
+                    b: B,
+                },
+            });
+            alert("指令已发送！请等待设备和前端页面响应！");
+        },//点击确认按钮事件回调
+        clear: function () {
+            //document.body.style.background = this.defaultColor;
+        }//点击清空按钮事件回调
+    })
+    </script>
 {% endblock %}
