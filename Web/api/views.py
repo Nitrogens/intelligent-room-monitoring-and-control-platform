@@ -1,4 +1,5 @@
 import redis
+import time
 
 from django.http import JsonResponse
 from django.views import View
@@ -16,6 +17,10 @@ KEY_G = "key_g"
 KEY_B = "key_b"
 
 r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
+
+
+def timestamp_convert(timestamp):
+    return time.strftime("%H:%M:%S", time.localtime(timestamp))
 
 
 class BasicInfoAction(View):
@@ -83,7 +88,7 @@ class LightIntensityAction(View):
         data_list = []
         for data_str in data_str_list:
             data_tuple = str(data_str.decode("ascii")).split(", ")
-            data_list.append((int(data_tuple[0]), float(data_tuple[1])))
+            data_list.append((timestamp_convert(int(data_tuple[0])), float(data_tuple[1])))
         return JsonResponse({'message': 'OK', 'data': data_list})
 
 
@@ -103,7 +108,7 @@ class SmokeAction(View):
         data_list = []
         for data_str in data_str_list:
             data_tuple = str(data_str.decode("ascii")).split(", ")
-            data_list.append((int(data_tuple[0]), float(data_tuple[1])))
+            data_list.append((timestamp_convert(int(data_tuple[0])), float(data_tuple[1])))
         return JsonResponse({'message': 'OK', 'data': data_list, 'threshold': smoke_threshold})
 
 
@@ -122,7 +127,7 @@ class TemperatureAction(View):
         data_list = []
         for data_str in data_str_list:
             data_tuple = str(data_str.decode("ascii")).split(", ")
-            data_list.append((int(data_tuple[0]), float(data_tuple[1])))
+            data_list.append((timestamp_convert(int(data_tuple[0])), float(data_tuple[1])))
         return JsonResponse({'message': 'OK', 'data': data_list})
 
 

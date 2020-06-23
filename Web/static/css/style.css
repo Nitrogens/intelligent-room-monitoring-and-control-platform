@@ -151,7 +151,7 @@ body {
 .user-admin {
     font-weight: bold;
     color: white !important;
-    color: black !important;
+    background-color: black !important;
 }
 
 .chart {
@@ -165,9 +165,9 @@ body {
     height: 500px;
 }
 
-#chart-codeforces, #chart-monthly {
+#chart-temperature, #chart-light, #chart-smoke {
     width: 1000px;
-    height: 400px;
+    height: 300px;
 }
 
 .footer {
